@@ -130,7 +130,7 @@ const FeaturedCars = () => {
                             <Star className="w-5 h-5"/>{car.rating}
                         </div>
                     </div>
-                    <p className="text-sm text-gray-500">{car.year}</p>
+                    <p className="">{car.year}</p>
                     <div>
                         <MapPin/> <span>{car.location}</span>
                     </div>
