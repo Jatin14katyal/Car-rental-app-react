@@ -1,11 +1,10 @@
 import React from 'react'
+import Hero from './Hero'
 
 const Home = () => {
-  return (
-    <div>
-        app 
-    </div>
-  )
+  return <>
+  <Hero/>
+  </>
 }
 
 export default Home
