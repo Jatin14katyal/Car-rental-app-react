@@ -104,12 +104,46 @@ const FeaturedCars = () => {
   return (
     <section className="bg-gray-100 py-20 sm:px-16 px-4">
       <div className="max-w-7xl mx-auto text-center mb-12">
-        <h2 className="sm:text-4xl text-3xl font-bold mb-2 flex justify-center"><span> <Car className="w-12 h-12" /></span>
-          <span>Featured Cars</span></h2>
-        <p>
+        <h2 className="sm:text-4xl text-3xl font-bold mb-2 flex justify-center items-center gap-2"><span className="text-blue-500"> <Car className="w-12 h-12" /></span>
+          <span className="text-gray-800">Featured Cars</span></h2>
+        <p className="text-gray-600 text-lg">
           Discover our handpicked selection of premium vehicles, perfect for any
           journey.
         </p>
+      </div>
+
+      <div className="grid grid-6 md:grid-cols-2 lg:grid-cols-3">
+        {cars.map((car) => (
+            <div key={car.id} className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition duration-300 hover:-translate-y-3">
+                <div className="relative overflow-hidden">
+                    <img src={car.image} alt={car.name} className="rounded-md w-full h-48 sm:h-56 md:h-60 object-cover" />
+                    <span className="absolute top-2 left-2 bg-white text-xs font-semibold px-2 py-1 rounded full-shadow">{car.type}</span>
+                    <span className="absolute top-2 right-2 bg-green-500 text-xs font-semibold px-2 py-1 rounded full-shadow">{car.status}</span>
+                </div>
+
+                <div className="mt-4">
+                    <div className="flex justify-between items-center">
+                        <h3 className="text-lg font-semibold">
+                            {car.name}
+                        </h3>
+                        <div className="text-yellow-500 text-sm flex items-center gap-1">
+                            <Star className="w-5 h-5"/>{car.rating}
+                        </div>
+                    </div>
+                    <p className="text-sm text-gray-500">{car.year}</p>
+                    <div>
+                        <MapPin/> <span>{car.location}</span>
+                    </div>
+                    <div>
+                       
+                        <span>  <Users/> {car.seats} seats</span>
+                        <span>  <Cog/> {car.transmission} </span>
+                        <span>  <Fuel/> {car.fuel}</span>
+
+                    </div>
+                </div>
+            </div>
+        ))}
       </div>
     </section>
   );
