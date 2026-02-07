@@ -11,7 +11,7 @@ const Hero = () => {
         Discover amazing deals on quality vehicles, Book now and drive away with
         confidecne
       </p>
-      <div className="bg-white rounded shadow-lg p-4 sm:p-6 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-5 gap-4 items-end text-black">
+      <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-5 gap-4 items-end text-black">
         <div>
           <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
             <MapPin className="w-5 h-5" />
@@ -70,22 +70,22 @@ const Hero = () => {
 
       {/* stats */}
 
-      <div className="">
+      <div className="mt-16 max-w-4x1 mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8text-white">
         <div>
-            <h2>500+</h2>
-            <p>Premium Cars</p>
+            <h2 className="sm:text-4xl text-3xl font-bold">500+</h2>
+            <p className="sm:text-lg text-gray-200">Premium Cars</p>
         </div>
         <div>
-            <h2>50+</h2>
-            <p>Locations</p>
+            <h2 className="sm:text-4xl text-3xl font-bold">50+</h2>
+            <p className="sm:text-lg text-gray-200">Locations</p>
         </div>
         <div>
-            <h2>24/7</h2>
-            <p>Support</p>
+            <h2 className="sm:text-4xl text-3xl font-bold">24/7</h2>
+            <p className="sm:text-lg text-gray-200">Support</p>
         </div>
         <div>
-            <h2>99%</h2>
-            <p>Satisfaction</p>
+            <h2 className="sm:text-4xl text-3xl font-bold">99%</h2>
+            <p className="sm:text-lg text-gray-200">Satisfaction</p>
         </div>
         
       </div>
