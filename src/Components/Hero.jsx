@@ -70,7 +70,7 @@ const Hero = () => {
 
       {/* stats */}
 
-      <div className="mt-16 max-w-4x1 mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8text-white">
+      <div className="mt-16 max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8text-white">
         <div>
             <h2 className="sm:text-4xl text-3xl font-bold">500+</h2>
             <p className="sm:text-lg text-gray-200">Premium Cars</p>
