@@ -112,7 +112,7 @@ const FeaturedCars = () => {
         </p>
       </div>
 
-      <div className="grid grid-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {cars.map((car) => (
             <div key={car.id} className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition duration-300 hover:-translate-y-3">
                 <div className="relative overflow-hidden">
@@ -131,14 +131,14 @@ const FeaturedCars = () => {
                         </div>
                     </div>
                     <p className="text-sm text-gray-500">{car.year}</p>
-                    <div>
-                        <MapPin/> <span>{car.location}</span>
+                    <div className="flex items-center text-sm text-gray-500 my-4 gap-1">
+                        <MapPin className="w-5 h-5"/> <span>{car.location}</span>
                     </div>
-                    <div>
+                    <div className="flex sm:items-center sm:flex-row flex-col sm:gap-10 gap-2 mt-2 text-gray-600 text-sm">
                        
-                        <span>  <Users/> {car.seats} seats</span>
-                        <span>  <Cog/> {car.transmission} </span>
-                        <span>  <Fuel/> {car.fuel}</span>
+                        <span className="inline-flex items-center gap-1">  <Users className="w-4 h-4 text-blue-500"/> {car.seats} seats</span>
+                        <span className="inline-flex items-center gap-1">  <Cog className="w-4 h-4 text-blue-500"/> {car.transmission} </span>
+                        <span className="inline-flex items-center gap-1">  <Fuel className="w-4 h-4 text-blue-500"/> {car.fuel}</span>
 
                     </div>
                 </div>
