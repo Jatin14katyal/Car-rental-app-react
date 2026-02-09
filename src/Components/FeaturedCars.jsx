@@ -118,7 +118,7 @@ const FeaturedCars = () => {
                 <div className="relative overflow-hidden">
                     <img src={car.image} alt={car.name} className="rounded-md w-full h-48 sm:h-56 md:h-60 object-cover" />
                     <span className="absolute top-2 left-2 bg-white text-xs font-semibold px-2 py-1 rounded full-shadow">{car.type}</span>
-                    <span className="absolute top-2 right-2 bg-green-500 text-xs font-semibold px-2 py-1 rounded full-shadow">{car.status}</span>
+                    <span className="absolute top-2 text-white right-2 bg-green-500 text-xs font-semibold px-2 py-1 rounded full-shadow">{car.status}</span>
                 </div>
 
                 <div className="mt-4">
@@ -141,10 +141,23 @@ const FeaturedCars = () => {
                         <span className="inline-flex items-center gap-1">  <Fuel className="w-4 h-4 text-blue-500"/> {car.fuel}</span>
 
                     </div>
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {car.badges.map((badge, i) =>(
+                        <span key={i} className="bg-gray-50 text-xs px-2 py-1 rounded-full font-semibold border border-gray-200">{badge}</span>
+                      ))}
+                    </div>
+                    <div className="mt-4">
+                      <p className="text-lg font-bold text-blue-500">${car.price} <span className="text-sm font-normal text-gray-500">/day</span></p>
+                    </div>
+                    <div className="flex sm:flex-row flex-col mt-4 gap-3">
+                      <button className="sm:w-1/2 w-full border border-gray-300 px-3 py-2 rounded cursor pointer transition duration-300 hover:bg-gray-300">View Details</button>
+                      <button className="sm:w-1/2 w-full bg-green-500 text-white border border-gray-300 px-3 py-2 rounded cursor pointer transition duration-300 hover:bg-green-700">Book Now</button>
+                    </div>
                 </div>
             </div>
         ))}
       </div>
+      <button className="mx-auto flex items-center jutify-center mt-12 bg-blue-500 py-3 px-5 text-white rounded cursor-pointer gap-1 transition duration-300 hover:bg-blue-700">View All Cars <ArrowRight className="h-5 w-5"/> </button>
     </section>
   );
 };
