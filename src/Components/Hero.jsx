@@ -35,7 +35,7 @@ const Hero = () =>{
   }, [])
 
   return (
-    <section className="bg-gradient-to-br from-blue-500 to-blue-700 text-white sm:py-28 py-16 text-center">
+    <section className="bg-gradient-to-br from-blue-500 to-blue-700 text-white sm:py-28 py-16 text-center px-4">
       <h1 className="text-4xl sm:tet-5xl font-bold mb-4 hero-reveal">
         Find Your Perfect <span className="text-yellow-400">Rental Car</span>
       </h1>
