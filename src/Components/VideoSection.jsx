@@ -6,7 +6,7 @@ const VideoSection = () => {
   const [showVideo, setShowVideo] = useState(false);
   return (
     <section className="px-4 sm:py-20 py-16 flex justifu-center items-center bg-white">
-      <div className="relative w-full max-w-10xl">
+      <div className="relative w-full max-w-10xl head-reveal ">
         {/* Image Container */}
         <img
           src={videoImg}
