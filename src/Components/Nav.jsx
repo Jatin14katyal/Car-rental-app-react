@@ -17,19 +17,21 @@ const Nav = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to={"/"} className="flex items-center space-x-2 text-gray-800">
+
+          <button
+            onClick={() => scrollToSection("Hero")}
+            className="flex items-center space-x-2 text-gray-800"
+          >
             <Car className="h-8 w-8 " />
             <span className="text-xl font-bold">AutoRent</span>
-          </Link>
+          </button>
 
           <div className="hidden md:flex items-center space-x-8">
-            {/* <Link to={"/"} className="text-gray-700 hover:text-blue-700 transition-colors duration-300">Home</Link> */}
-
             <button
               onClick={() => scrollToSection("Hero")}
               className="text-gray-700 hover:text-blue-700 transition-colors duration-300"
             >
-              Hero
+              Home
             </button>
 
             <button
