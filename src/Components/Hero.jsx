@@ -1,41 +1,44 @@
 import React, { useEffect } from "react";
 import { MapPin, Calendar, Clock, Search } from "lucide-react";
-import ScrollReveal from 'scrollreveal'
+import ScrollReveal from "scrollreveal";
 
-const Hero = () =>{
+const Hero = () => {
   useEffect(() => {
-    ScrollReveal().reveal(".hero-reveal",{
+    ScrollReveal().reveal(".hero-reveal", {
       distance: "50px",
-      easing:'ease-in-out',
+      easing: "ease-in-out",
       duration: 1000,
-      origin:"left",
-      reset:false
-    })
-  }, [])
+      origin: "left",
+      reset: false,
+    });
+  }, []);
 
   useEffect(() => {
-    ScrollReveal().reveal(".head-reveal",{
+    ScrollReveal().reveal(".head-reveal", {
       scale: 0.85,
       distance: "0px",
-      easing:'ease-in-out',
+      easing: "ease-in-out",
       duration: 1500,
-      reset:false
-    })
-  }, [])
+      reset: false,
+    });
+  }, []);
 
   useEffect(() => {
-    ScrollReveal().reveal(".reveal-y",{
+    ScrollReveal().reveal(".reveal-y", {
       distance: "100px",
-      easing:'ease-in-out',
+      easing: "ease-in-out",
       duration: 1500,
-      origin:"bottom",
-      interval:200,
-      reset:false
-    })
-  }, [])
+      origin: "bottom",
+      interval: 200,
+      reset: false,
+    });
+  }, []);
 
   return (
-    <section className="bg-gradient-to-br from-blue-500 to-blue-700 text-white sm:py-28 py-16 text-center px-4">
+    <section
+      id="Hero"
+      className="bg-gradient-to-br from-blue-500 to-blue-700 text-white sm:py-28 py-16 text-center px-4"
+    >
       <h1 className="text-4xl sm:tet-5xl font-bold mb-4 hero-reveal">
         Find Your Perfect <span className="text-yellow-400">Rental Car</span>
       </h1>
@@ -79,7 +82,7 @@ const Hero = () =>{
           />
         </div>
 
-       <div>
+        <div>
           <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2">
             <Calendar className="w-5 h-5" />
             <span>Return Date</span>
@@ -91,35 +94,31 @@ const Hero = () =>{
         </div>
 
         <div>
-            <button className="flex items-center justify-center gap-2 w-full cursor-pointer bg-blue-500 text-white p-2 rounded hover:bg-blue-700 transition duration-300">
-                <Search className="w-5 h-5"/> <span>Search Cars</span>
-            </button>
+          <button className="flex items-center justify-center gap-2 w-full cursor-pointer bg-blue-500 text-white p-2 rounded hover:bg-blue-700 transition duration-300">
+            <Search className="w-5 h-5" /> <span>Search Cars</span>
+          </button>
         </div>
-
-        
-
       </div>
 
       {/* stats */}
 
       <div className="mt-16 max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8text-white hero-reveal">
         <div>
-            <h2 className="sm:text-4xl text-3xl font-bold">500+</h2>
-            <p className="sm:text-lg text-gray-200">Premium Cars</p>
+          <h2 className="sm:text-4xl text-3xl font-bold">500+</h2>
+          <p className="sm:text-lg text-gray-200">Premium Cars</p>
         </div>
         <div>
-            <h2 className="sm:text-4xl text-3xl font-bold">50+</h2>
-            <p className="sm:text-lg text-gray-200">Locations</p>
+          <h2 className="sm:text-4xl text-3xl font-bold">50+</h2>
+          <p className="sm:text-lg text-gray-200">Locations</p>
         </div>
         <div>
-            <h2 className="sm:text-4xl text-3xl font-bold">24/7</h2>
-            <p className="sm:text-lg text-gray-200">Support</p>
+          <h2 className="sm:text-4xl text-3xl font-bold">24/7</h2>
+          <p className="sm:text-lg text-gray-200">Support</p>
         </div>
         <div>
-            <h2 className="sm:text-4xl text-3xl font-bold">99%</h2>
-            <p className="sm:text-lg text-gray-200">Satisfaction</p>
+          <h2 className="sm:text-4xl text-3xl font-bold">99%</h2>
+          <p className="sm:text-lg text-gray-200">Satisfaction</p>
         </div>
-        
       </div>
     </section>
   );
