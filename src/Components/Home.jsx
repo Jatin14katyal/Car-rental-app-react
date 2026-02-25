@@ -16,7 +16,7 @@ const Home = () => {
       setTimeout(() => {
         const section = document.getElementById(id);
         if (section) section.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      }, 10);
     }
   }, [location]);
   return <>

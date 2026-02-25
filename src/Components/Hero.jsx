@@ -5,9 +5,9 @@ import ScrollReveal from "scrollreveal";
 const Hero = () => {
   useEffect(() => {
     ScrollReveal().reveal(".hero-reveal", {
-      distance: "50px",
+      distance: "30px",
       easing: "ease-in-out",
-      duration: 1000,
+      duration: 650,
       origin: "left",
       reset: false,
     });
@@ -15,21 +15,21 @@ const Hero = () => {
 
   useEffect(() => {
     ScrollReveal().reveal(".head-reveal", {
-      scale: 0.85,
+      scale: 0.95,
       distance: "0px",
       easing: "ease-in-out",
-      duration: 1500,
+      duration: 700,
       reset: false,
     });
   }, []);
 
   useEffect(() => {
     ScrollReveal().reveal(".reveal-y", {
-      distance: "100px",
+      distance: "40px",
       easing: "ease-in-out",
-      duration: 1500,
+      duration: 700,
       origin: "bottom",
-      interval: 200,
+      interval: 90,
       reset: false,
     });
   }, []);
