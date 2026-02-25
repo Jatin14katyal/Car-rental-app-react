@@ -1,4 +1,4 @@
-import React from "react";
+import React,  { useState }  from "react";
 import bmw from "../assets/bmw.jpg";
 import tesla from "../assets/tesla.jpg";
 import audi from "../assets/audi.jpg";
@@ -7,7 +7,6 @@ import kia from "../assets/kia.jpg";
 import ford from "../assets/ford.jpg";
 import cars from "../data/Cars";
 import { Car, MapPin, Users, Cog, Fuel, Star, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 
 // const cars = [
 //   {
@@ -103,6 +102,7 @@ import { Link } from "react-router-dom";
 // ];
 
 const FeaturedCars = () => {
+  const [selectedCar, setSelectedCar] = useState(null);
   return (
     <section id="FeaturedCars" className="bg-gray-100 py-20 sm:px-16 px-4">
       <div className="max-w-7xl mx-auto text-center mb-12 head-reveal">
@@ -183,12 +183,12 @@ const FeaturedCars = () => {
                 {/* <button className="sm:w-1/2 w-full border border-gray-300 px-3 py-2 rounded cursor-pointer transition duration-300 hover:bg-gray-300">
                   View Details
                 </button> */}
-                <Link
-                  to={`/cars/${car.id}`}
-                  className="sm:w-1/2 w-full border border-gray-300 px-3 py-2 rounded cursor-pointer transition duration-300 hover:bg-gray-300 text-center"
-                >
-                  View Details
-                </Link>
+               <button
+  onClick={() => setSelectedCar(car)}
+  className="sm:w-1/2 w-full border border-gray-300 px-3 py-2 rounded cursor-pointer transition duration-300 hover:bg-gray-300"
+>
+  View Details
+</button>
                 <button className="sm:w-1/2 w-full bg-green-500 text-white border border-gray-300 px-3 py-2 rounded cursor-pointer transition duration-300 hover:bg-green-700">
                   Book Now
                 </button>
@@ -200,6 +200,66 @@ const FeaturedCars = () => {
       <button className="mx-auto flex items-center justify-center mt-12 bg-blue-500 py-3 px-5 text-white rounded cursor-pointer gap-1 transition duration-300 hover:bg-blue-700">
         View All Cars <ArrowRight className="h-5 w-5" />
       </button>
+      {selectedCar && (
+  <div
+    className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black bg-opacity-40 px-4"
+    onClick={() => setSelectedCar(null)}
+  >
+    <div
+      className="w-full sm:max-w-2xl bg-white rounded-t-2xl sm:rounded-2xl shadow-xl p-6 mb-0 sm:mb-0 transform transition-all duration-300 translate-y-0"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className="flex justify-between items-start mb-4">
+        <div>
+          <h2 className="text-2xl font-bold">{selectedCar.name}</h2>
+          <p className="text-gray-500">
+            {selectedCar.year} • {selectedCar.location}
+          </p>
+        </div>
+        <button
+          className="text-gray-600 hover:text-black text-xl"
+          onClick={() => setSelectedCar(null)}
+        >
+          ✕
+        </button>
+      </div>
+
+      <img
+        src={selectedCar.image}
+        alt={selectedCar.name}
+        className="w-full h-64 object-cover rounded-xl mb-4"
+      />
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-gray-700 mb-4">
+        <div><b>Seats:</b> {selectedCar.seats}</div>
+        <div><b>Transmission:</b> {selectedCar.transmission}</div>
+        <div><b>Fuel:</b> {selectedCar.fuel}</div>
+      </div>
+
+      <div className="flex flex-wrap gap-2 mb-4">
+        {selectedCar.badges.map((b, i) => (
+          <span
+            key={i}
+            className="bg-gray-50 text-xs px-2 py-1 rounded-full font-semibold border border-gray-200"
+          >
+            {b}
+          </span>
+        ))}
+      </div>
+
+      <div className="flex items-center justify-between">
+        <p className="text-xl font-bold text-blue-500">
+          ${selectedCar.price}{" "}
+          <span className="text-sm font-normal text-gray-500">/day</span>
+        </p>
+
+        <button className="bg-green-500 text-white px-5 py-2 rounded hover:bg-green-700 transition duration-300">
+          Book Now
+        </button>
+      </div>
+    </div>
+  </div>
+)}
     </section>
   );
 };
