@@ -32,7 +32,7 @@ const location = useLocation();
             onClick={() => scrollToSection("Hero")}
             className="flex items-center space-x-2 text-gray-800"
           >
-            <Car className="h-8 w-8 " />
+            <Car className="h-8 w-8 text-blue-500" />
             <span className="text-xl font-bold">CarDekho</span>
           </button>
 
