@@ -26,7 +26,7 @@ const Register = () => {
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-1">
           Create Account
         </h2>
-        <p className="text-center text-gray-500 mb-6">Join Today</p>
+        <p className="text-center text-gray-500 mb-6">Join Now</p>
 
         <form>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
