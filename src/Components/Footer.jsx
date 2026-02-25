@@ -19,7 +19,7 @@ const Footer = () => {
         <div>
           <Link to={"/"} className="flex items-center space-x-2">
             <Car className="w-8 h-8 text-blue-500" />{" "}
-            <span className="text-xl font-bold">AutoRent</span>
+            <span className="text-xl font-bold">CarDekho</span>
           </Link>
           <p className="leading-relaxed my-4">
             Your trusted partner for premium car rentals. Experience the freedon
@@ -113,7 +113,7 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-gray-700 mt-10 py-6 text-sm flex flex-col sm:flex-row justify-between items-center text-gray-500">
-        <p>&copy; {new Date().getFullYear()} Autorent. All rights reserved</p>
+        <p>&copy; {new Date().getFullYear()} CarDekho. All rights reserved</p>
         <div className="flex gap-4 mt-4 sm:mt-0">
           <a href="" className="hover:underline">
             Privacy Policy
