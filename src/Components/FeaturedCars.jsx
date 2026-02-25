@@ -1,108 +1,16 @@
-import React,  { useState }  from "react";
-import bmw from "../assets/bmw.jpg";
-import tesla from "../assets/tesla.jpg";
-import audi from "../assets/audi.jpg";
-import toyota from "../assets/toyota.jpg";
-import kia from "../assets/kia.jpg";
-import ford from "../assets/ford.jpg";
+import React, { useState } from "react";
 import cars from "../data/Cars";
 import { Car, MapPin, Users, Cog, Fuel, Star, ArrowRight } from "lucide-react";
 
-// const cars = [
-//   {
-//     id: 1,
-//     name: "Tesla Model 3",
-//     year: 2023,
-//     location: "San Francisco",
-//     seats: 5,
-//     transmission: "Automatic",
-//     fuel: "Electric",
-//     price: 89,
-//     rating: 4.8,
-//     badges: ["Autopilot", "Premium Audio", "+2 more"],
-//     type: "Electric",
-//     status: "Available",
-//     image: tesla,
-//   },
-//   {
-//     id: 2,
-//     name: "BMW X5",
-//     year: 2023,
-//     location: "New York",
-//     seats: 7,
-//     transmission: "Automatic",
-//     fuel: "Gasoline",
-//     price: 149,
-//     rating: 4.7,
-//     badges: ["Leather Seats", "Navigation", "+2 more"],
-//     type: "Luxury SUV",
-//     status: "Available",
-//     image: bmw,
-//   },
-//   {
-//     id: 3,
-//     name: "Audi A4",
-//     year: 2023,
-//     location: "Los Angeles",
-//     seats: 5,
-//     transmission: "Automatic",
-//     fuel: "Gasoline",
-//     price: 79,
-//     rating: 4.6,
-//     badges: ["Virtual Cockpit", "Heated Seats", "+2 more"],
-//     type: "Sedan",
-//     status: "Available",
-//     image: audi,
-//   },
-//   {
-//     id: 4,
-//     name: "Toyota Auris",
-//     year: 2022,
-//     location: "New York",
-//     seats: 5,
-//     transmission: "Automatic",
-//     fuel: "Petrol",
-//     price: 49,
-//     rating: 4.4,
-//     badges: ["Reliable", "Fuel Efficient", "+1 more"],
-//     type: "Sedan",
-//     status: "Available",
-//     image: toyota,
-//   },
-//   {
-//     id: 5,
-//     name: "Ford Explorer",
-//     year: 2021,
-//     location: "Phoenix",
-//     seats: 7,
-//     transmission: "Automatic",
-//     fuel: "Petrol",
-//     price: 69,
-//     rating: 4.5,
-//     badges: ["Spacious", "All-wheel drive"],
-//     type: "SUV",
-//     status: "Available",
-//     image: ford,
-//   },
-//   {
-//     id: 6,
-//     name: "Kia Sportage",
-//     year: 2022,
-//     location: "London",
-//     seats: 5,
-//     transmission: "Automatic",
-//     fuel: "Hybrid",
-//     price: 65,
-//     rating: 4.3,
-//     badges: ["Hybrid", "Modern Interior"],
-//     type: "Crossover",
-//     status: "Available",
-//     image: kia,
-//   },
-// ];
-
 const FeaturedCars = () => {
   const [selectedCar, setSelectedCar] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setTimeout(() => setSelectedCar(null), 250);
+  };
+
   return (
     <section id="FeaturedCars" className="bg-gray-100 py-20 sm:px-16 px-4">
       <div className="max-w-7xl mx-auto text-center mb-12 head-reveal">
@@ -146,10 +54,13 @@ const FeaturedCars = () => {
                   {car.rating}
                 </div>
               </div>
+
               <p className="text-sm text-gray-500">{car.year}</p>
+
               <div className="flex items-center text-sm text-gray-500 my-4 gap-1">
                 <MapPin className="w-5 h-5" /> <span>{car.location}</span>
               </div>
+
               <div className="flex sm:items-center sm:flex-row flex-col sm:gap-10 gap-2 mt-2 text-gray-600 text-sm">
                 <span className="inline-flex items-center gap-1">
                   <Users className="w-4 h-4 text-blue-500" /> {car.seats} seats
@@ -161,6 +72,7 @@ const FeaturedCars = () => {
                   <Fuel className="w-4 h-4 text-blue-500" /> {car.fuel}
                 </span>
               </div>
+
               <div className="flex flex-wrap gap-2 mt-3">
                 {car.badges.map((badge, i) => (
                   <span
@@ -171,6 +83,7 @@ const FeaturedCars = () => {
                   </span>
                 ))}
               </div>
+
               <div className="mt-4">
                 <p className="text-lg font-bold text-blue-500">
                   ${car.price}{" "}
@@ -179,16 +92,19 @@ const FeaturedCars = () => {
                   </span>
                 </p>
               </div>
+
               <div className="flex sm:flex-row flex-col mt-4 gap-3">
-                {/* <button className="sm:w-1/2 w-full border border-gray-300 px-3 py-2 rounded cursor-pointer transition duration-300 hover:bg-gray-300">
+                <button
+                  onClick={() => {
+                    setSelectedCar(car); // mount modal
+                    setIsOpen(false); // start closed
+                    setTimeout(() => setIsOpen(true), 10); // then open (triggers animation)
+                  }}
+                  className="sm:w-1/2 w-full border border-gray-300 px-3 py-2 rounded cursor-pointer transition duration-300 hover:bg-gray-300"
+                >
                   View Details
-                </button> */}
-               <button
-  onClick={() => setSelectedCar(car)}
-  className="sm:w-1/2 w-full border border-gray-300 px-3 py-2 rounded cursor-pointer transition duration-300 hover:bg-gray-300"
->
-  View Details
-</button>
+                </button>
+
                 <button className="sm:w-1/2 w-full bg-green-500 text-white border border-gray-300 px-3 py-2 rounded cursor-pointer transition duration-300 hover:bg-green-700">
                   Book Now
                 </button>
@@ -197,69 +113,82 @@ const FeaturedCars = () => {
           </div>
         ))}
       </div>
+
       <button className="mx-auto flex items-center justify-center mt-12 bg-blue-500 py-3 px-5 text-white rounded cursor-pointer gap-1 transition duration-300 hover:bg-blue-700">
         View All Cars <ArrowRight className="h-5 w-5" />
       </button>
+
       {selectedCar && (
-  <div
-    className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black bg-opacity-40 px-4"
-    onClick={() => setSelectedCar(null)}
-  >
-    <div
-      className="w-full sm:max-w-2xl bg-white rounded-t-2xl sm:rounded-2xl shadow-xl p-6 mb-0 sm:mb-0 transform transition-all duration-300 translate-y-0"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <div className="flex justify-between items-start mb-4">
-        <div>
-          <h2 className="text-2xl font-bold">{selectedCar.name}</h2>
-          <p className="text-gray-500">
-            {selectedCar.year} • {selectedCar.location}
-          </p>
-        </div>
-        <button
-          className="text-gray-600 hover:text-black text-xl"
-          onClick={() => setSelectedCar(null)}
+        <div
+          className={`fixed inset-0 z-50 flex items-end sm:items-center justify-center px-4
+  backdrop-blur-md bg-white/10 transition-opacity duration-300
+  ${isOpen ? "opacity-100" : "opacity-0"}`}
+          onClick={closeModal}
         >
-          ✕
-        </button>
-      </div>
-
-      <img
-        src={selectedCar.image}
-        alt={selectedCar.name}
-        className="w-full h-64 object-cover rounded-xl mb-4"
-      />
-
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-gray-700 mb-4">
-        <div><b>Seats:</b> {selectedCar.seats}</div>
-        <div><b>Transmission:</b> {selectedCar.transmission}</div>
-        <div><b>Fuel:</b> {selectedCar.fuel}</div>
-      </div>
-
-      <div className="flex flex-wrap gap-2 mb-4">
-        {selectedCar.badges.map((b, i) => (
-          <span
-            key={i}
-            className="bg-gray-50 text-xs px-2 py-1 rounded-full font-semibold border border-gray-200"
+          <div
+            className={`w-full sm:max-w-2xl bg-white rounded-t-2xl sm:rounded-2xl shadow-xl p-6
+            transform transition-all duration-300
+            ${isOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+            onClick={(e) => e.stopPropagation()}
           >
-            {b}
-          </span>
-        ))}
-      </div>
+            <div className="flex justify-between items-start mb-4">
+              <div>
+                <h2 className="text-2xl font-bold">{selectedCar.name}</h2>
+                <p className="text-gray-500">
+                  {selectedCar.year} • {selectedCar.location}
+                </p>
+              </div>
 
-      <div className="flex items-center justify-between">
-        <p className="text-xl font-bold text-blue-500">
-          ${selectedCar.price}{" "}
-          <span className="text-sm font-normal text-gray-500">/day</span>
-        </p>
+              <button
+                className="text-gray-600 hover:text-black text-xl"
+                onClick={closeModal}
+              >
+                ✕
+              </button>
+            </div>
 
-        <button className="bg-green-500 text-white px-5 py-2 rounded hover:bg-green-700 transition duration-300">
-          Book Now
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+            <img
+              src={selectedCar.image}
+              alt={selectedCar.name}
+              className="w-full h-64 object-cover rounded-xl mb-4"
+            />
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-gray-700 mb-4">
+              <div>
+                <b>Seats:</b> {selectedCar.seats}
+              </div>
+              <div>
+                <b>Transmission:</b> {selectedCar.transmission}
+              </div>
+              <div>
+                <b>Fuel:</b> {selectedCar.fuel}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2 mb-4">
+              {selectedCar.badges.map((b, i) => (
+                <span
+                  key={i}
+                  className="bg-gray-50 text-xs px-2 py-1 rounded-full font-semibold border border-gray-200"
+                >
+                  {b}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex items-center justify-between">
+              <p className="text-xl font-bold text-blue-500">
+                ${selectedCar.price}{" "}
+                <span className="text-sm font-normal text-gray-500">/day</span>
+              </p>
+
+              <button className="bg-green-500 text-white px-5 py-2 rounded hover:bg-green-700 transition duration-300">
+                Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
