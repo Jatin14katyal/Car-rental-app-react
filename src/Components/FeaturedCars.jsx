@@ -7,6 +7,7 @@ import kia from "../assets/kia.jpg";
 import ford from "../assets/ford.jpg";
 import cars from "../data/Cars";
 import { Car, MapPin, Users, Cog, Fuel, Star, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // const cars = [
 //   {
@@ -179,9 +180,15 @@ const FeaturedCars = () => {
                 </p>
               </div>
               <div className="flex sm:flex-row flex-col mt-4 gap-3">
-                <button className="sm:w-1/2 w-full border border-gray-300 px-3 py-2 rounded cursor-pointer transition duration-300 hover:bg-gray-300">
+                {/* <button className="sm:w-1/2 w-full border border-gray-300 px-3 py-2 rounded cursor-pointer transition duration-300 hover:bg-gray-300">
                   View Details
-                </button>
+                </button> */}
+                <Link
+                  to={`/cars/${car.id}`}
+                  className="sm:w-1/2 w-full border border-gray-300 px-3 py-2 rounded cursor-pointer transition duration-300 hover:bg-gray-300 text-center"
+                >
+                  View Details
+                </Link>
                 <button className="sm:w-1/2 w-full bg-green-500 text-white border border-gray-300 px-3 py-2 rounded cursor-pointer transition duration-300 hover:bg-green-700">
                   Book Now
                 </button>
