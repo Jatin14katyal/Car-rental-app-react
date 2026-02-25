@@ -12,52 +12,52 @@ import {
 
 const features = [
   {
-    title: "Fully Insured",
+    title: "Fully Insured Vehicles",
     description:
-      "All our vehicles come with comprehensive insurance coverage for your peace of mind",
+      "Drive with peace of mind knowing every vehicle includes comprehensive insurance.",
     icon: <Shield className="w-8 h-8" />,
   },
   {
-    title: "Fully Insured",
+    title: "24/7 Customer Support",
     description:
-      "All our vehicles come with comprehensive insurance coverage for your peace of mind",
-    icon: <Clock4 className="w-8 h-8" />,
-  },
-  {
-    title: "Fully Insured",
-    description:
-      "All our vehicles come with comprehensive insurance coverage for your peace of mind",
-    icon: <CreditCard className="w-8 h-8" />,
-  },
-  {
-    title: "Fully Insured",
-    description:
-      "All our vehicles come with comprehensive insurance coverage for your peace of mind",
-    icon: <MapPin className="w-8 h-8" />,
-  },
-  {
-    title: "Fully Insured",
-    description:
-      "All our vehicles come with comprehensive insurance coverage for your peace of mind",
+      "Our support team is always ready to assist you anytime, anywhere.",
     icon: <Headphones className="w-8 h-8" />,
   },
   {
-    title: "Fully Insured",
+    title: "Easy Online Booking",
     description:
-      "All our vehicles come with comprehensive insurance coverage for your peace of mind",
+      "Book your car in minutes with our quick and hassle-free process.",
+    icon: <CreditCard className="w-8 h-8" />,
+  },
+  {
+    title: "Multiple Pickup Locations",
+    description:
+      "Pick up your vehicle from convenient locations near you.",
+    icon: <MapPin className="w-8 h-8" />,
+  },
+  {
+    title: "Verified & Clean Cars",
+    description:
+      "Every vehicle is inspected and sanitized before every ride.",
     icon: <FileBadge className="w-8 h-8" />,
   },
   {
-    title: "Fully Insured",
+    title: "Flexible Rental Plans",
     description:
-      "All our vehicles come with comprehensive insurance coverage for your peace of mind",
-    icon: <Users className="w-8 h-8" />,
+      "Hourly, daily, or long-term rentals to match your needs.",
+    icon: <Clock4 className="w-8 h-8" />,
   },
   {
-    title: "Fully Insured",
+    title: "Affordable Pricing",
     description:
-      "All our vehicles come with comprehensive insurance coverage for your peace of mind",
+      "Transparent pricing with no hidden charges.",
     icon: <Zap className="w-8 h-8" />,
+  },
+  {
+    title: "Trusted by Thousands",
+    description:
+      "Join thousands of satisfied customers across multiple cities.",
+    icon: <Users className="w-8 h-8" />,
   },
 ];
 const Features = () => {
@@ -65,7 +65,7 @@ const Features = () => {
     <section id="Features" className="py-16 bg-gray-100 px-4 sm:px-6 lg:px-28">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="sm:text-4xl text-3xl font-bold text-gray-800 mb-4 hero-reveal">
-          Why Choose CarDekho?
+          Why Choose Us?
         </h2>
         <p className="text-gray-600 mb-12 max-w-2xl mx-auto text-lg hero-reveal">
           We're committed to providing you with the best car rental experience
@@ -76,7 +76,7 @@ const Features = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex flex-col bg-white items-center text-center border border-gray-300 rounded-lg p-6 shadow-sm hover:shadow-md transform hover:-translate-y-2 transition duration-300 reveal-y"
+              className="flex flex-col bg-white items-center text-center border border-gray-300 rounded-lg p-6 shadow-sm hover:shadow-lg hover:shadow-md transform hover:-translate-y-2 hover:border-blue-500 transition duration-300 reveal-y"
             >
               <div className="w-16 h-16 flex items-center justify-center rounded-full bg-blue-500 mb-4 text-white">
                 {feature.icon}
