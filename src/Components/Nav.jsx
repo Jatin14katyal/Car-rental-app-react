@@ -1,16 +1,26 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Car, Menu, X, LogIn } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+const location = useLocation();
 
   const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  // if not on Home page → go to Home first
+  if (location.pathname !== "/") {
+    navigate("/", { state: { scrollTo: id } });
+    return;
+  }
+
+  // if already on Home → scroll normally
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+};
 
   return (
     <nav className="bg-white shadow sticky top-0 z-50">
