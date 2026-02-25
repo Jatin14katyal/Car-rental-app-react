@@ -52,7 +52,7 @@ const location = useLocation();
             </button>
 
             <button
-              onClick={() => scrollToSection("Features")}
+              onClick={() => scrollToSection("About")}
               className="text-gray-700 hover:text-blue-700 transition-colors duration-300"
             >
               About

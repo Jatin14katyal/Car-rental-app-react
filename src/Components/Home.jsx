@@ -4,6 +4,7 @@ import FeaturedCars from './FeaturedCars'
 import VideoSection from './VideoSection'
 import Features from './Features'
 import Footer from './Footer'
+import About from "./About";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -23,6 +24,7 @@ const Home = () => {
   <Hero/>
   <FeaturedCars/>
   <VideoSection/>
+  <About /> 
   <Features />
   <Footer />
   </>
