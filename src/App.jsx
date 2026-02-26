@@ -4,16 +4,22 @@ import Layout from './Components/Layout'
 import Home from './Components/Home'
 import Login from "./pages/Login"
 import Register from "./pages/Register"
+import Cars from "./pages/Cars";
+import CarDetails from "./pages/CarDetails";
+
 
 const App=()=>{
   return(
     <Router>
-      <Layout />
-      
       <Routes>
-        <Route path='/' index element={<Home/>} />
-        <Route path='/login' index element={<Login/>} />
-        <Route path='/register' index element={<Register/>} />
+
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="cars" element={<Cars />} />
+          <Route path="cars/:id" element={<CarDetails />} />
+        </Route>
       </Routes>
     </Router>
   )
