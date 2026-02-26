@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   Car,
@@ -12,17 +12,28 @@ import {
 } from "lucide-react";
 
 const Footer = () => {
+  const [showTerms, setShowTerms] = useState(false);
+  const [termsOpen, setTermsOpen] = useState(false);
+
+  const openTerms = () => {
+    setShowTerms(true);
+    setTermsOpen(false);
+    setTimeout(() => setTermsOpen(true), 10);
+  };
+
+  const closeTerms = () => {
+    setTermsOpen(false);
+    setTimeout(() => setShowTerms(false), 250);
+  };
   const navigate = useNavigate();
   const location = useLocation();
 
   const goToSection = (id) => {
-    // If not on Home page, navigate first and let Home.jsx handle the scroll
     if (location.pathname !== "/") {
       navigate("/", { state: { scrollTo: id } });
       return;
     }
 
-    // If already on Home, scroll directly
     const section = document.getElementById(id);
     if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -33,7 +44,6 @@ const Footer = () => {
       className="bg-gray-900 text-gray-300 py-16 px-4 sm:px-6 lg:px-20"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-        {/* Brand */}
         <div>
           <button
             onClick={() => goToSection("Hero")}
@@ -78,7 +88,6 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* Back to top */}
           <button
             onClick={() => goToSection("Hero")}
             className="mt-6 inline-flex items-center gap-2 text-sm text-gray-300 hover:text-white"
@@ -88,12 +97,14 @@ const Footer = () => {
           </button>
         </div>
 
-        {/* Quick Links */}
         <div>
           <h4 className="text-white font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-2">
             <li>
-              <button onClick={() => goToSection("Hero")} className="hover:underline">
+              <button
+                onClick={() => goToSection("Hero")}
+                className="hover:underline"
+              >
                 Home
               </button>
             </li>
@@ -106,24 +117,29 @@ const Footer = () => {
               </button>
             </li>
             <li>
-              <button onClick={() => goToSection("About")} className="hover:underline">
+              <button
+                onClick={() => goToSection("About")}
+                className="hover:underline"
+              >
                 About Us
               </button>
             </li>
             <li>
-              <button onClick={() => goToSection("Footer")} className="hover:underline">
+              <button
+                onClick={() => goToSection("Footer")}
+                className="hover:underline"
+              >
                 Contact
               </button>
             </li>
             <li>
-              <Link to="/terms" className="hover:underline">
+              <button onClick={openTerms} className="hover:underline">
                 Terms &amp; Conditions
-              </Link>
+              </button>
             </li>
           </ul>
         </div>
 
-        {/* Services */}
         <div>
           <h4 className="text-white font-semibold mb-4">Services</h4>
           <ul className="space-y-2">
@@ -170,7 +186,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Contact */}
         <div>
           <h4 className="text-white font-semibold mb-4">Contact Us</h4>
           <ul className="space-y-3">
@@ -206,7 +221,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="border-t border-gray-700 mt-10 py-6 text-sm flex flex-col sm:flex-row justify-between items-center text-gray-500">
         <p>&copy; {new Date().getFullYear()} CarDekho. All rights reserved.</p>
 
@@ -214,11 +228,62 @@ const Footer = () => {
           <Link to="/privacy" className="hover:underline">
             Privacy Policy
           </Link>
-          <Link to="/terms" className="hover:underline">
+          <button onClick={openTerms} className="hover:underline">
             Terms of Service
-          </Link>
+          </button>
         </div>
       </div>
+      {showTerms && (
+        <div
+          className={`fixed inset-0 z-50 flex items-end sm:items-center justify-center px-4
+    backdrop-blur-md bg-white/10 transition-opacity duration-300
+    ${termsOpen ? "opacity-100" : "opacity-0"}`}
+          onClick={closeTerms}
+        >
+          <div
+            className={`w-full sm:max-w-2xl bg-white rounded-t-2xl sm:rounded-2xl shadow-xl p-6
+      transform transition-all duration-300
+      ${termsOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-start mb-4">
+              <h2 className="text-2xl font-bold text-gray-800">
+                Terms & Conditions
+              </h2>
+              <button
+                className="text-gray-600 hover:text-black text-xl"
+                onClick={closeTerms}
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="text-gray-600 space-y-3 text-sm leading-relaxed">
+              <p>
+                By using CarDekho, you agree to follow our rental policies.
+                Please read these terms carefully before booking.
+              </p>
+
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Valid driving license is required at pickup.</li>
+                <li>Vehicle must be returned on time to avoid late charges.</li>
+                <li>Any damage to the car may result in additional fees.</li>
+                <li>Fuel policy: return with same fuel level as pickup.</li>
+                <li>Bookings are subject to availability and verification.</li>
+              </ul>
+            </div>
+
+            <div className="flex justify-end mt-6">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white px-5 py-2 rounded transition duration-300"
+                onClick={closeTerms}
+              >
+                Got it
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 };
