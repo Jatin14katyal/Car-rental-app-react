@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   Car,
@@ -12,19 +12,6 @@ import {
 } from "lucide-react";
 
 const Footer = () => {
-  const [showTerms, setShowTerms] = useState(false);
-  const [termsOpen, setTermsOpen] = useState(false);
-
-  const openTerms = () => {
-    setShowTerms(true);
-    setTermsOpen(false);
-    setTimeout(() => setTermsOpen(true), 10);
-  };
-
-  const closeTerms = () => {
-    setTermsOpen(false);
-    setTimeout(() => setShowTerms(false), 250);
-  };
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -33,10 +20,42 @@ const Footer = () => {
       navigate("/", { state: { scrollTo: id } });
       return;
     }
-
     const section = document.getElementById(id);
     if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  const [showTerms, setShowTerms] = useState(false);
+  const [termsOpen, setTermsOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState("Terms & Conditions");
+
+  const openTerms = (title) => {
+    setModalTitle(title);
+    setShowTerms(true);
+    setTermsOpen(false);
+    setTimeout(() => setTermsOpen(true), 10);
+  };
+
+  const closeTerms = () => {
+    setTermsOpen(false);
+    setTimeout(() => setShowTerms(false), 220);
+  };
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === "Escape" && showTerms) closeTerms();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [showTerms]);
+
+  useEffect(() => {
+    if (!showTerms) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [showTerms]);
 
   return (
     <footer
@@ -133,7 +152,10 @@ const Footer = () => {
               </button>
             </li>
             <li>
-              <button onClick={openTerms} className="hover:underline">
+              <button
+                onClick={() => openTerms("Terms & Conditions")}
+                className="hover:underline"
+              >
                 Terms &amp; Conditions
               </button>
             </li>
@@ -228,7 +250,11 @@ const Footer = () => {
           <Link to="/privacy" className="hover:underline">
             Privacy Policy
           </Link>
-          <button onClick={openTerms} className="hover:underline">
+
+          <button
+            onClick={() => openTerms("Terms of Service")}
+            className="hover:underline"
+          >
             Terms of Service
           </button>
         </div>
@@ -236,29 +262,30 @@ const Footer = () => {
       {showTerms && (
         <div
           className={`fixed inset-0 z-50 flex items-end sm:items-center justify-center px-4
-    backdrop-blur-md bg-white/10 transition-opacity duration-300
-    ${termsOpen ? "opacity-100" : "opacity-0"}`}
+          backdrop-blur-md bg-white/10 transition-opacity duration-200
+          ${termsOpen ? "opacity-100" : "opacity-0"}`}
           onClick={closeTerms}
         >
           <div
-            className={`w-full sm:max-w-2xl bg-white rounded-t-2xl sm:rounded-2xl shadow-xl p-6
-      transform transition-all duration-300
-      ${termsOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+            className={`w-full sm:max-w-2xl bg-white rounded-t-2xl sm:rounded-2xl shadow-xl
+            transform transition-all duration-200
+            ${termsOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex justify-between items-start mb-4">
-              <h2 className="text-2xl font-bold text-gray-800">
-                Terms & Conditions
+            <div className="flex justify-between items-start px-6 py-4 border-b border-gray-200">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
+                {modalTitle}
               </h2>
               <button
                 className="text-gray-600 hover:text-black text-xl"
                 onClick={closeTerms}
+                aria-label="Close"
               >
                 ✕
               </button>
             </div>
 
-            <div className="text-gray-600 space-y-3 text-sm leading-relaxed">
+            <div className="px-6 py-4 max-h-[70vh] overflow-y-auto text-gray-600 space-y-3 text-sm leading-relaxed">
               <p>
                 By using CarDekho, you agree to follow our rental policies.
                 Please read these terms carefully before booking.
@@ -268,12 +295,12 @@ const Footer = () => {
                 <li>Valid driving license is required at pickup.</li>
                 <li>Vehicle must be returned on time to avoid late charges.</li>
                 <li>Any damage to the car may result in additional fees.</li>
-                <li>Fuel policy: return with same fuel level as pickup.</li>
+                <li>Fuel policy: return with the same fuel level as pickup.</li>
                 <li>Bookings are subject to availability and verification.</li>
               </ul>
             </div>
 
-            <div className="flex justify-end mt-6">
+            <div className="px-6 py-4 border-t border-gray-200 flex justify-end">
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white px-5 py-2 rounded transition duration-300"
                 onClick={closeTerms}
