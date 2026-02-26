@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import cars from "../data/Cars";
-import { Star, MapPin } from "lucide-react";
+import { Star, MapPin, Users, Cog, Fuel } from "lucide-react";
 
 const Cars = () => {
   return (
@@ -25,11 +24,23 @@ const Cars = () => {
               className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition duration-300 hover:-translate-y-2"
             >
               {/* Image */}
-              <img
-                src={car.image}
-                alt={car.name}
-                className="w-full h-48 object-cover rounded-md"
-              />
+              <div className="relative">
+                <img
+                  src={car.image}
+                  alt={car.name}
+                  className="w-full h-48 object-cover rounded-md"
+                />
+
+                {/* Type (top-left) */}
+                <span className="absolute top-2 left-2 bg-white text-xs font-semibold px-2 py-1 rounded full-shadow">
+                  {car.type}
+                </span>
+
+                {/* Status/Availability (top-right) */}
+                <span className="absolute top-2 right-2 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded full-shadow">
+                  {car.status}
+                </span>
+              </div>
 
               {/* Info */}
               <div className="mt-4">
@@ -41,28 +52,53 @@ const Cars = () => {
                   </div>
                 </div>
 
+                {/* Year */}
+                <p className="text-sm text-gray-500">{car.year}</p>
+
+                {/* Location */}
                 <div className="flex items-center gap-1 text-sm text-gray-500 mt-2">
                   <MapPin className="w-4 h-4" />
                   {car.location}
                 </div>
 
-                <div className="mt-3 text-blue-500 font-bold">
-                  ${car.price}{" "}
-                  <span className="text-sm text-gray-500 font-normal">
-                    /day
+                {/* Seats / Transmission / Fuel */}
+                <div className="flex sm:items-center sm:flex-row flex-col sm:gap-6 gap-2 mt-4 text-gray-600 text-sm">
+                  <span className="inline-flex items-center gap-1">
+                    <Users className="w-4 h-4 text-blue-500" /> {car.seats} seats
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <Cog className="w-4 h-4 text-blue-500" /> {car.transmission}
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <Fuel className="w-4 h-4 text-blue-500" /> {car.fuel}
                   </span>
                 </div>
 
-                {/* Buttons */}
-                <div className="flex gap-3 mt-4">
-                  <Link
-                    to={`/cars/${car.id}`}
-                    className="w-1/2 border border-gray-300 py-2 rounded hover:bg-gray-200 text-center transition"
-                  >
-                    View Details
-                  </Link>
+                {/* Badges */}
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {car.badges.map((badge, i) => (
+                    <span
+                      key={i}
+                      className="bg-gray-50 text-xs px-2 py-1 rounded-full font-semibold border border-gray-200"
+                    >
+                      {badge}
+                    </span>
+                  ))}
+                </div>
 
-                  <button className="w-1/2 bg-green-500 text-white py-2 rounded hover:bg-green-700 transition">
+                {/* Price */}
+                <div className="mt-4">
+                  <p className="text-lg font-bold text-blue-500">
+                    ${car.price}{" "}
+                    <span className="text-sm font-normal text-gray-500">
+                      /day
+                    </span>
+                  </p>
+                </div>
+
+                {/* Book Now Button (full width) */}
+                <div className="mt-4">
+                  <button className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-700 transition">
                     Book Now
                   </button>
                 </div>
