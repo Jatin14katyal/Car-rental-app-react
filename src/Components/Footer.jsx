@@ -238,7 +238,7 @@ const Footer = () => {
         <p>&copy; {new Date().getFullYear()} CarDekho. All rights reserved.</p>
 
         <div className="flex gap-4 mt-4 sm:mt-0">
-          <Link to="/privacy" className="hover:underline">
+          <Link to="/" className="hover:underline">
             Privacy Policy
           </Link>
 
