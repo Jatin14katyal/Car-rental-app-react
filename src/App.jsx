@@ -4,7 +4,7 @@ import Layout from "./Components/Layout";
 import Home from "./Components/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Cars from "./pages/Cars";
+import ViewCars from "./pages/ViewCars";
 import CarDetails from "./pages/CarDetails";
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="cars" element={<Cars />} />
+          <Route path="cars" element={<ViewCars />} />
           <Route path="cars/:id" element={<CarDetails />} />
         </Route>
       </Routes>

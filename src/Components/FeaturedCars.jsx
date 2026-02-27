@@ -2,7 +2,6 @@ import React from "react";
 import cars from "../data/Cars";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-
 import { Car } from "lucide-react";
 
 const FeaturedCars = () => {
