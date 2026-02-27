@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import {
-  Car,
-  Facebook,
-  Twitter,
-  Instagram,
-  Phone,
-  Mail,
-  MapPin,
-  ArrowUp,
-} from "lucide-react";
+import {  Car,  Facebook,  Twitter,  Instagram,  Phone,  Mail,  MapPin,  ArrowUp} from "lucide-react";
 
 const Footer = () => {
   const navigate = useNavigate();

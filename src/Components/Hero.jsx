@@ -100,8 +100,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* stats */}
-
       <div className="mt-16 max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8text-white hero-reveal">
         <div>
           <h2 className="sm:text-4xl text-3xl font-bold">500+</h2>

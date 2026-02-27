@@ -6,7 +6,6 @@ const Cars = () => {
   return (
     <section className="min-h-screen bg-gray-100 py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        {/* Title */}
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl font-bold mb-3">
             All Available Cars
@@ -16,14 +15,12 @@ const Cars = () => {
           </p>
         </div>
 
-        {/* Cars Grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {cars.map((car) => (
             <div
               key={car.id}
               className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition duration-300 hover:-translate-y-2"
             >
-              {/* Image */}
               <div className="relative">
                 <img
                   src={car.image}
@@ -31,18 +28,15 @@ const Cars = () => {
                   className="w-full h-48 object-cover rounded-md"
                 />
 
-                {/* Type (top-left) */}
                 <span className="absolute top-2 left-2 bg-white text-xs font-semibold px-2 py-1 rounded full-shadow">
                   {car.type}
                 </span>
 
-                {/* Status/Availability (top-right) */}
                 <span className="absolute top-2 right-2 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded full-shadow">
                   {car.status}
                 </span>
               </div>
 
-              {/* Info */}
               <div className="mt-4">
                 <div className="flex justify-between items-center">
                   <h3 className="text-lg font-semibold">{car.name}</h3>
@@ -52,19 +46,17 @@ const Cars = () => {
                   </div>
                 </div>
 
-                {/* Year */}
                 <p className="text-sm text-gray-500">{car.year}</p>
 
-                {/* Location */}
                 <div className="flex items-center gap-1 text-sm text-gray-500 mt-2">
                   <MapPin className="w-4 h-4" />
                   {car.location}
                 </div>
 
-                {/* Seats / Transmission / Fuel */}
                 <div className="flex sm:items-center sm:flex-row flex-col sm:gap-6 gap-2 mt-4 text-gray-600 text-sm">
                   <span className="inline-flex items-center gap-1">
-                    <Users className="w-4 h-4 text-blue-500" /> {car.seats} seats
+                    <Users className="w-4 h-4 text-blue-500" /> {car.seats}{" "}
+                    seats
                   </span>
                   <span className="inline-flex items-center gap-1">
                     <Cog className="w-4 h-4 text-blue-500" /> {car.transmission}
@@ -74,7 +66,6 @@ const Cars = () => {
                   </span>
                 </div>
 
-                {/* Badges */}
                 <div className="flex flex-wrap gap-2 mt-3">
                   {car.badges.map((badge, i) => (
                     <span
@@ -86,7 +77,6 @@ const Cars = () => {
                   ))}
                 </div>
 
-                {/* Price */}
                 <div className="mt-4">
                   <p className="text-lg font-bold text-blue-500">
                     ${car.price}{" "}
@@ -96,7 +86,6 @@ const Cars = () => {
                   </p>
                 </div>
 
-                {/* Book Now Button (full width) */}
                 <div className="mt-4">
                   <button className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-700 transition">
                     Book Now

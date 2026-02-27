@@ -6,8 +6,6 @@ import { ArrowRight } from "lucide-react";
 import { Car } from "lucide-react";
 
 const FeaturedCars = () => {
-  // Pick 3 category-like items (based on your existing types)
-  // This keeps it simple and uses your data without adding new data files.
   const categoryCars = cars.slice(3, 6);
 
   return (
@@ -20,7 +18,8 @@ const FeaturedCars = () => {
           <span className="text-gray-800">Our Cars</span>
         </h2>
         <p className="text-gray-900 text-lg font-medium">
-          Step into a world of premium mobility with vehicles built for every occasion.
+          Step into a world of premium mobility with vehicles built for every
+          occasion.
         </p>
       </div>
 
@@ -30,7 +29,6 @@ const FeaturedCars = () => {
             key={car.id}
             className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition duration-300 hover:-translate-y-3 reveal-y"
           >
-            {/* Bigger image */}
             <div className="relative overflow-hidden">
               <img
                 src={car.image}
@@ -39,7 +37,6 @@ const FeaturedCars = () => {
               />
             </div>
 
-            {/* Premium category text where buttons used to be */}
             <div className="mt-3">
               <h3 className="text-2xl font-bold tracking-wide text-blue-600 text-center">
                 {car.type}
@@ -51,20 +48,17 @@ const FeaturedCars = () => {
           </div>
         ))}
       </div>
-    
 
-{/* Navigate to All Cars Page */}
-<div className="text-center mt-12">
+      <div className="text-center mt-12">
         <Link
           to="/cars"
           className="inline-flex items-center gap-2 bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-700 transition"
-          >
+        >
           View All Cars <ArrowRight className="h-5 w-5" />
         </Link>
       </div>
-  </section>
+    </section>
   );
 };
-  
-  
-  export default FeaturedCars;
+
+export default FeaturedCars;

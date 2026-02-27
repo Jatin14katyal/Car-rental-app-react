@@ -7,17 +7,16 @@ const VideoSection = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
-    setShowVideo(true);     // mount
-    setIsOpen(false);       // start closed
-    setTimeout(() => setIsOpen(true), 10); // animate open
+    setShowVideo(true);
+    setIsOpen(false);
+    setTimeout(() => setIsOpen(true), 10);
   };
 
   const closeModal = () => {
     setIsOpen(false);
-    setTimeout(() => setShowVideo(false), 250); // unmount after animation
+    setTimeout(() => setShowVideo(false), 250);
   };
 
-  // Optional: close on ESC
   useEffect(() => {
     const onKeyDown = (e) => {
       if (e.key === "Escape" && showVideo) closeModal();
@@ -29,14 +28,12 @@ const VideoSection = () => {
   return (
     <section className="px-4 sm:py-20 py-16 flex justify-center items-center bg-white">
       <div className="relative w-full max-w-7xl head-reveal">
-        {/* Image Container */}
         <img
           src={videoImg}
           alt="Car Preview"
           className="w-full sm:h-[450px] h-[300px] rounded-xl object-cover shadow-lg"
         />
 
-        {/* Play Button */}
         <button
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-10"
           onClick={openModal}
@@ -49,7 +46,6 @@ const VideoSection = () => {
           </span>
         </button>
 
-        {/* Video modal */}
         {showVideo && (
           <div
             className={`fixed inset-0 z-50 flex items-center justify-center px-4 backdrop-blur-sm bg-black/30
@@ -72,7 +68,6 @@ const VideoSection = () => {
 
               <div className="aspect-video w-full">
                 <iframe
-                  // key forces a full reload when modal mounts, so video stops on close
                   key={showVideo ? "video-open" : "video-closed"}
                   src="https://www.youtube.com/embed/H1Ol38BuFCk"
                   title="YouTube video player"

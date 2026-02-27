@@ -6,28 +6,24 @@ import { useNavigate, useLocation } from "react-router-dom";
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-const location = useLocation();
+  const location = useLocation();
 
   const scrollToSection = (id) => {
-  // if not on Home page → go to Home first
-  if (location.pathname !== "/") {
-    navigate("/", { state: { scrollTo: id } });
-    return;
-  }
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: id } });
+      return;
+    }
 
-  // if already on Home → scroll normally
-  const section = document.getElementById(id);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
-  }
-};
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <nav className="bg-white shadow sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-
           <button
             onClick={() => scrollToSection("Hero")}
             className="flex items-center space-x-2 text-gray-800"
@@ -82,8 +78,6 @@ const location = useLocation();
             </Link>
           </div>
 
-          {/* Mobie menu button */}
-
           <div className="md:hidden">
             <button
               className="cursor-pointer"
@@ -94,7 +88,6 @@ const location = useLocation();
           </div>
         </div>
 
-        {/* Mobile navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">

@@ -1,14 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import cars from "../data/Cars";
-import {
-  ArrowLeft,
-  MapPin,
-  Users,
-  Cog,
-  Fuel,
-  Star,
-} from "lucide-react";
+import { ArrowLeft, MapPin, Users, Cog, Fuel, Star } from "lucide-react";
 
 const CarDetails = () => {
   const { id } = useParams();
@@ -25,8 +18,6 @@ const CarDetails = () => {
   return (
     <section className="min-h-screen bg-gray-100 py-16 px-4">
       <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
-
-        {/* Back Button */}
         <div className="p-6 border-b">
           <Link
             to="/cars"
@@ -37,10 +28,7 @@ const CarDetails = () => {
           </Link>
         </div>
 
-        {/* Content */}
         <div className="grid md:grid-cols-2 gap-8 p-6">
-
-          {/* Image */}
           <div>
             <img
               src={car.image}
@@ -49,11 +37,8 @@ const CarDetails = () => {
             />
           </div>
 
-          {/* Details */}
           <div className="flex flex-col justify-between">
-
             <div>
-              {/* Title + Rating */}
               <div className="flex justify-between items-start mb-3">
                 <h1 className="text-3xl font-bold">{car.name}</h1>
                 <div className="flex items-center gap-1 text-yellow-500">
@@ -64,13 +49,11 @@ const CarDetails = () => {
 
               <p className="text-gray-500 mb-4">{car.year}</p>
 
-              {/* Location */}
               <div className="flex items-center gap-2 text-gray-600 mb-6">
                 <MapPin className="w-5 h-5" />
                 {car.location}
               </div>
 
-              {/* Specs */}
               <div className="grid grid-cols-3 gap-6 mb-6 text-gray-700">
                 <div className="flex flex-col items-center">
                   <Users className="text-blue-500 mb-1" />
@@ -88,7 +71,6 @@ const CarDetails = () => {
                 </div>
               </div>
 
-              {/* Badges */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {car.badges.map((badge, index) => (
                   <span
@@ -101,7 +83,6 @@ const CarDetails = () => {
               </div>
             </div>
 
-            {/* Price + Button */}
             <div className="border-t pt-6">
               <div className="flex items-center justify-between">
                 <div className="text-2xl font-bold text-blue-500">
@@ -117,7 +98,6 @@ const CarDetails = () => {
                 </button>
               </div>
             </div>
-
           </div>
         </div>
       </div>
