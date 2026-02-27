@@ -51,7 +51,7 @@ const Footer = () => {
   return (
     <footer
       id="Footer"
-      className="bg-gray-900 text-gray-300 py-16 px-4 sm:px-6 lg:px-20"
+      className="bg-gray-900 text-gray-300 py-10 px-4 sm:px-6 lg:px-20"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
